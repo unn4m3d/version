@@ -6,6 +6,6 @@ module Version
   end
 
   macro fetch
-    fetch(__FILE__)
+    ::Version.fetch(__FILE__)
   end
 end
