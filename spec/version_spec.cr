@@ -33,3 +33,16 @@ describe Version::Requirement do
     approx.matches?("3.3.0").should eq(false)
   end
 end
+
+describe Version::RequirementSet do 
+  it "works" do 
+    req_set = Version::RequirementSet.parse ">= 1.0.0, < 3.0.0, != 2.5.6"
+
+    req_set.matches?("0.9.9").should eq(false)
+    req_set.matches?("1.0.0").should eq(true)
+    req_set.matches?("1.0.1").should eq(true)
+    req_set.matches?("2.5.5").should eq(true)
+    req_set.matches?("2.5.6").should eq(false)
+    req_set.matches?("3.0.0").should eq(false)
+  end
+end
